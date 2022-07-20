@@ -70,3 +70,22 @@ Triggers = when new data is written
 - once: write a single micro-batch and stop
 - processing-time: lok for new data at fixed intervals
 - continuous (currently experimental `2020`)
+
+
+### Discretized Streams
+
+Never ending sequence of RDDs
+- nodes clocks are synchronized
+- batches are triggered at the same time in the cluster
+- each batch is an RDD
+
+Essentially a distributed collection of elements of the same type
+- functional operators e.g: map, flatMap, filter, reduce
+- accessors to each RDD
+- more advance operators (later)
+
+Needs a receiver to perform computations
+- one receiver per DStream
+- fetches data  from  the source, sends to spark, create blocks
+- is managed by the `StreamingContext` on the driver
+- occupies one core on the machine!
